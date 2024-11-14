@@ -2,7 +2,7 @@ import json
 import random
 import cohere
 
-co = cohere.Client("45BpYDLVZcfKlgMGMiTAObC7GNdpNnAVHP4u5GXA")
+co = cohere.Client("YOUR COHERE API KEY HERE")
 
 with open("intents.json") as file:
     data = json.load(file)
