@@ -1,0 +1,189 @@
+/* Body and general layout */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Gradient background */
+    animation: gradientAnimation 10s ease infinite; /* Dynamic gradient animation */
+}
+
+/* Chat container styling */
+.chat-container {
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: #ffffff;
+    animation: slideIn 0.5s ease-out; /* Slide in animation */
+}
+
+/* Header styling */
+.chat-container h2 {
+    text-align: center;
+    background: linear-gradient(135deg, #007bff, #0056b3); /* Gradient header */
+    color: white;
+    margin: 0;
+    padding: 12px;
+    font-size: 1.2em;
+}
+
+/* Chatbox where messages are displayed */
+#chatbox {
+    height: 400px;
+    overflow-y: auto;
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Scrollbar styling */
+#chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    background-color: #007bff;
+    border-radius: 10px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Chat message styling */
+#chat-output {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.user-message, .bot-message {
+    padding: 12px;
+    border-radius: 12px;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-radius: 20px 20px 0 20px; /* Rounded rectangle effect for user message */
+}
+
+.bot-message {
+    background-color: #f1f1f1;
+    color: #333;
+    align-self: flex-start;
+    border-radius: 0 20px 20px 20px; /* Rounded rectangle effect for bot message */
+}
+
+/* Fade-in animation for messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input field and button container */
+.message-input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 12px 12px; /* Rounded bottom corners for the input area */
+}
+
+/* Input field styling */
+input[type="text"] {
+    width: calc(100% - 70px); /* Adjust width considering the button */
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 15px 0 0 15px; /* Rounded edges for the input box */
+    outline: none;
+    font-size: 1em;
+    transition: border 0.3s ease-in-out;
+}
+
+/* Focus effect on input */
+input[type="text"]:focus {
+    border: 2px solid #007bff;
+}
+
+/* Send button styling */
+button {
+    width: 60px;
+    padding: 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 15px 15px 0; /* Rounded edges for the button */
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Typing indicator animation */
+.typing-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: #007bff;
+    visibility: hidden;
+}
+
+.typing-indicator.active {
+    visibility: visible;
+}
+
+.typing-indicator span {
+    animation: typing 1.2s steps(5, end) infinite;
+    margin: 0 4px;
+}
+
+@keyframes typing {
+    0% {
+        content: "";
+    }
+    50% {
+        content: ".";
+    }
+    100% {
+        content: "..";
+    }
+}
+
+/* Gradient background animation */
+@keyframes gradientAnimation {
+    0% {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+    25% {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    50% {
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+    }
+    75% {
+        background: linear-gradient(135deg, #ff512f, #dd2476);
+    }
+    100% {
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    }
+}
