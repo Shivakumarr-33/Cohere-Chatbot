@@ -19,22 +19,18 @@
     </div>
     
     <script>
-        // Function to send message
         function sendMessage() {
             const userMessage = document.getElementById("user-input").value;
-            if (userMessage.trim() === "") return;  // Don't send empty messages
+            if (userMessage.trim() === "") return;
 
-            // Display user message
             const chatOutput = document.getElementById("chat-output");
             const userMessageElem = document.createElement("div");
             userMessageElem.className = "user-message";
             userMessageElem.innerText = userMessage;
             chatOutput.appendChild(userMessageElem);
 
-            // Clear input field
             document.getElementById("user-input").value = "";
 
-            // Send message to backend
             fetch("/get_response", {
                 method: "POST",
                 headers: {
@@ -44,21 +40,17 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Display chatbot response
                 const botMessageElem = document.createElement("div");
                 botMessageElem.className = "bot-message";
                 botMessageElem.innerText = data.response;
                 chatOutput.appendChild(botMessageElem);
-                
-                // Scroll to the latest message
                 chatOutput.scrollTop = chatOutput.scrollHeight;
             });
         }
 
-        // Event listener to send message when pressing Enter
         document.getElementById("user-input").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
-                sendMessage();  // Trigger sendMessage function on Enter key
+                sendMessage();
             }
         });
     </script>
